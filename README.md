@@ -43,11 +43,16 @@ npm start      # 執行生產版本
 
 專案為純靜態輸出（`output: "export"`）。`.github/workflows/deploy-pages.yml` 會在推送到 `main` 時自動建置並部署。
 
-**第一次部署必須先開啟 Pages：**
+**第一次部署必須先開啟 Pages**（GitHub MCP 無法代你按這個開關，沒開就會出現 `Failed to create deployment (status: 404)`）：
 
-1. 開啟 [Settings → Pages](https://github.com/google-fb/bloom-sim/settings/pages)
-2. Build and deployment → Source 選 **GitHub Actions**
-3. 到 [Actions](https://github.com/google-fb/bloom-sim/actions) 把最新的 **Deploy to GitHub Pages** 工作流程 **Re-run**
+1. 用瀏覽器登入 GitHub，開啟
+   https://github.com/google-fb/bloom-sim/settings/pages
+2. **Build and deployment → Source** 選 **GitHub Actions**（不是 Deploy from a branch）
+3. 若帳號 email 尚未驗證，先到 Settings → Emails 完成驗證，否則 Pages 不能啟用
+4. 回到 [失敗的 workflow](https://github.com/google-fb/bloom-sim/actions/runs/35362187814) 按 **Re-run failed jobs**
+
+建置 job 已經成功過；只要 Pages 開啟，deploy 就會把網站放到
+https://google-fb.github.io/bloom-sim/
 
 之後每次 `git push` 到 `main` 都會更新網站。若 deploy 停在 `github-pages` environment，用 GitHub 帳號核准一次即可。
 
