@@ -1,18 +1,13 @@
-name: Deploy to GitHub Pages
+name: Build static export
 
+# Project Pages is not enabled on google-fb/bloom-sim, so actions/deploy-pages
+# returns 404 ("Failed to create deployment"). The public site is built and
+# published by google-fb/google-fb.github.io (Pages already enabled there).
 on:
   push:
     branches: [main]
+  pull_request:
   workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: pages
-  cancel-in-progress: true
 
 jobs:
   build:
@@ -31,20 +26,3 @@ jobs:
         run: npm run build
         env:
           NEXT_PUBLIC_BASE_PATH: /bloom-sim
-
-      - name: Disable Jekyll processing
-        run: touch out/.nojekyll
-
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: out
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4

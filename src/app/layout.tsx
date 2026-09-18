@@ -1,21 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { Noto_Sans_TC, Noto_Serif_TC } from "next/font/google";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import "./globals.css";
-
-const sansTC = Noto_Sans_TC({
-  variable: "--font-sans-tc",
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
-  display: "swap",
-});
-
-const serifTC = Noto_Serif_TC({
-  variable: "--font-serif-tc",
-  subsets: ["latin"],
-  weight: ["500", "700"],
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: {
@@ -32,7 +17,15 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="zh-Hant" className={`${sansTC.variable} ${serifTC.variable} h-full antialiased`}>
+    <html lang="zh-Hant" className="h-full antialiased">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body className="flex min-h-full flex-col">
         <TooltipProvider>{children}</TooltipProvider>
       </body>
