@@ -1,0 +1,142 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans:
+    var(--font-sans-tc), "PingFang TC", "Microsoft JhengHei", "Noto Sans CJK TC", system-ui,
+    sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-heading:
+    var(--font-serif-tc), "Songti TC", "Noto Serif CJK TC", "PMingLiU", Georgia, serif;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-moss: var(--moss);
+  --color-moss-foreground: var(--moss-foreground);
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  --paper: oklch(0.965 0.009 82);
+  --ink: oklch(0.24 0.018 55);
+  --background: oklch(0.965 0.009 82);
+  --foreground: oklch(0.24 0.018 55);
+  --card: oklch(0.988 0.005 85);
+  --card-foreground: oklch(0.24 0.018 55);
+  --popover: oklch(0.988 0.005 85);
+  --popover-foreground: oklch(0.24 0.018 55);
+  --primary: oklch(0.5 0.145 35);
+  --primary-foreground: oklch(0.985 0.008 80);
+  --secondary: oklch(0.925 0.02 88);
+  --secondary-foreground: oklch(0.3 0.03 55);
+  --muted: oklch(0.935 0.012 85);
+  --muted-foreground: oklch(0.5 0.022 60);
+  --accent: oklch(0.92 0.03 140);
+  --accent-foreground: oklch(0.32 0.06 145);
+  --destructive: oklch(0.55 0.2 25);
+  --border: oklch(0.875 0.016 80);
+  --input: oklch(0.875 0.016 80);
+  --ring: oklch(0.62 0.11 35);
+  --moss: oklch(0.5 0.08 145);
+  --moss-foreground: oklch(0.98 0.01 120);
+  --success: oklch(0.55 0.12 150);
+  --warning: oklch(0.7 0.14 70);
+  --chart-1: oklch(0.5 0.145 35);
+  --chart-2: oklch(0.5 0.08 145);
+  --chart-3: oklch(0.7 0.14 70);
+  --chart-4: oklch(0.55 0.1 300);
+  --chart-5: oklch(0.6 0.02 60);
+  --radius: 0.75rem;
+  --sidebar: oklch(0.95 0.01 82);
+  --sidebar-foreground: oklch(0.24 0.018 55);
+  --sidebar-primary: oklch(0.5 0.145 35);
+  --sidebar-primary-foreground: oklch(0.985 0.008 80);
+  --sidebar-accent: oklch(0.92 0.02 88);
+  --sidebar-accent-foreground: oklch(0.3 0.03 55);
+  --sidebar-border: oklch(0.875 0.016 80);
+  --sidebar-ring: oklch(0.62 0.11 35);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+  }
+  body {
+    @apply bg-background text-foreground;
+    background-image:
+      radial-gradient(ellipse at top, oklch(0.985 0.008 85) 0%, transparent 60%),
+      linear-gradient(to bottom, oklch(0.965 0.009 82), oklch(0.955 0.011 80));
+    background-attachment: fixed;
+  }
+  h1,
+  h2,
+  h3,
+  .font-heading {
+    font-family: var(--font-heading);
+  }
+}
+
+@layer utilities {
+  .paper-grain {
+    background-image:
+      radial-gradient(oklch(0.9 0.012 80 / 0.5) 0.5px, transparent 0.5px),
+      radial-gradient(oklch(0.9 0.012 80 / 0.35) 0.5px, transparent 0.5px);
+    background-size:
+      18px 18px,
+      26px 26px;
+    background-position:
+      0 0,
+      9px 13px;
+  }
+  .canvas-frame {
+    box-shadow:
+      inset 0 0 0 1px oklch(0.85 0.015 80),
+      0 24px 60px -30px oklch(0.3 0.03 55 / 0.35);
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+}
