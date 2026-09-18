@@ -37,11 +37,19 @@ npm start      # 執行生產版本
 
 ## 部署（GitHub Pages）
 
-專案為純靜態輸出（`output: "export"`）。`.github/workflows/deploy-pages.yml` 會在推送到 `main` 時自動建置並部署。
+儲存庫：<https://github.com/google-fb/bloom-sim>
 
 公開測試網址：<https://google-fb.github.io/bloom-sim/>
 
-第一次部署請確認儲存庫 **Settings → Pages → Source** 為 **GitHub Actions**（首次 workflow 通常會自動開啟）。之後每次 `git push` 到 `main` 都會更新網站。
+專案為純靜態輸出（`output: "export"`）。`.github/workflows/deploy-pages.yml` 會在推送到 `main` 時自動建置並部署。
+
+**第一次部署必須先開啟 Pages：**
+
+1. 開啟 [Settings → Pages](https://github.com/google-fb/bloom-sim/settings/pages)
+2. Build and deployment → Source 選 **GitHub Actions**
+3. 到 [Actions](https://github.com/google-fb/bloom-sim/actions) 把最新的 **Deploy to GitHub Pages** 工作流程 **Re-run**
+
+之後每次 `git push` 到 `main` 都會更新網站。若 deploy 停在 `github-pages` environment，用 GitHub 帳號核准一次即可。
 
 ## 專案結構
 
